@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Indicates that a block can be attached to another block
  */
-public interface Attachable {
+public interface Attachable extends MaterialComplex {
     /**
      * Gets the face that this block is attached on
      *

@@ -169,4 +169,26 @@ public interface World {
      * Gets the default spawn location.
      */
     public Location getSpawnLocation();
+    
+    /**
+     * Create a new Material of type <tt>type</tt>
+     * 
+     * This material is only guaranteed to have the basic functionality of any material.
+     * It may have extra functionality, but this needs to be checked for using <tt>instanceof</tt>.
+     * For example, to check if a material is colorable, you must use:
+     * <tt>if (material instanceof org.bukkit.material.Colorable) </tt>
+     * 
+     * @param type the type of this material
+     * @return
+     */
+    public Material newMaterial(Material.Type type);
+    
+    /**
+     * Similar to <tt>newMaterial(Material.Type type)</tt> but uses a lookup against a name.
+     * 
+     * This can be used to get materials through their enum name, or to get custom materials that are server specific.
+     * @param name
+     * @return
+     */
+    public Material newMaterial(String name);
 }
