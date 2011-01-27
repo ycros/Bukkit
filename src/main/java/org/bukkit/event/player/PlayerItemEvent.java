@@ -63,12 +63,12 @@ public class PlayerItemEvent extends PlayerEvent implements Cancellable {
      * Convenience method. Returns the material of the item represented by this
      * event
      * 
-     * @return Material the material of the item used
+     * @return Material the material of the item used, null if not defined
      */
     public Material getMaterial() {
-        if (this.item == null) return Material.AIR;
+        if (this.item == null) return null;
         
-        return item.getType();
+        return item.getMaterial();
     }
     
     /**
@@ -80,7 +80,7 @@ public class PlayerItemEvent extends PlayerEvent implements Cancellable {
     public boolean isBlock() {
         if (item == null) return false;
         
-        return item.getType().isBlock();
+        return item.getMaterial().isBlock();
     }
     
     /**

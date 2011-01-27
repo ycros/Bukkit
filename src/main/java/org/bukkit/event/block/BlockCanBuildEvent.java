@@ -4,19 +4,16 @@
 package org.bukkit.event.block;
 
 import org.bukkit.block.Block;
-import org.bukkit.Material;
 
 /**
  * @author durron597
  */
 public class BlockCanBuildEvent extends BlockEvent {
     protected boolean buildable;
-    protected int material;
 
-    public BlockCanBuildEvent(Type type, Block block, int id, boolean canBuild) {
+    public BlockCanBuildEvent(Type type, Block block, boolean canBuild) {
         super(type, block);
         buildable = canBuild;
-        material = id;
     }
 
     /**
@@ -34,13 +31,5 @@ public class BlockCanBuildEvent extends BlockEvent {
      */
     public void setBuildable(boolean cancel) {
         this.buildable = cancel;
-    }
-
-    public Material getMaterial() {
-        return Material.getMaterial(material);
-    }
-
-    public int getMaterialId() {
-        return material;
     }
 }

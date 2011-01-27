@@ -10,10 +10,10 @@ import org.bukkit.event.Event;
  * @author Dinnerbone
  */
 public class BlockPhysicsEvent extends BlockEvent {
-    private final int changed;
+    private final Material changed;
     private boolean cancel = false;
 
-    public BlockPhysicsEvent(final Event.Type type, final Block block, final int changed) {
+    public BlockPhysicsEvent(final Event.Type type, final Block block, final Material changed) {
         super(type, block);
         this.changed = changed;
     }
@@ -21,19 +21,10 @@ public class BlockPhysicsEvent extends BlockEvent {
     /**
      * Gets the type of block that changed, causing this event
      *
-     * @return Changed block's type id
-     */
-    public int getChangedTypeId() {
-        return changed;
-    }
-
-    /**
-     * Gets the type of block that changed, causing this event
-     *
      * @return Changed block's type
      */
-    public Material getChangedType() {
-        return Material.getMaterial(changed);
+    public Material getChangedMaterial() {
+        return changed;
     }
 
     /**

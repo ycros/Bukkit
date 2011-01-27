@@ -1,6 +1,7 @@
 package org.bukkit.inventory;
 
-import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Material;
 
 /**
@@ -41,23 +42,23 @@ public interface Inventory {
      * Stores the given ItemStacks in the inventory.
      * 
      * This will try to fill existing stacks and empty slots as good as it can.
-     * It will return a HashMap of what it couldn't fit.
+     * It will return a Map of what it couldn't fit.
      * 
      * @param items The ItemStacks to add
      * @return 
      */
-     public HashMap<Integer, ItemStack> addItem(ItemStack... items);
+     public Map<Integer, ItemStack> addItem(ItemStack... items);
 
     /**
      * Removes the given ItemStacks from the inventory.
      * 
      * It will try to remove 'as much as possible' from the types and amounts you
-     * give as arguments. It will return a HashMap of what it couldn't remove.
+     * give as arguments. It will return a Map of what it couldn't remove.
      * 
      * @param items The ItemStacks to remove
      * @return 
      */
-     public HashMap<Integer, ItemStack> removeItem(ItemStack... items);
+     public Map<Integer, ItemStack> removeItem(ItemStack... items);
 
     /**
      * Get all ItemStacks from the inventory
@@ -74,12 +75,12 @@ public interface Inventory {
     public void setContents(ItemStack[] items);
 
     /**
-     * Check if the inventory contains any ItemStacks with the given materialId
+     * Check if the inventory contains any ItemStacks with the given Material.Type
      * 
-     * @param materialId The materialId to check for
+     * @param materialType The Material.Type to check for
      * @return If any ItemStacks were found
      */
-    public boolean contains(int materialId); 
+    public boolean contains(Material.Type materialType); 
     
     /**
      * Check if the inventory contains any ItemStacks with the given material
@@ -104,7 +105,7 @@ public interface Inventory {
      * @param materialId The materialId to look for
      * @return The Slots found.
      */
-    public HashMap<Integer, ? extends ItemStack> all(int materialId); 
+    public Map<Integer, ? extends ItemStack> all(int materialId); 
 
     /**
      * Find all slots in the inventory containing any ItemStacks with the given material
@@ -112,7 +113,7 @@ public interface Inventory {
      * @param materialId The material to look for
      * @return The Slots found.
      */
-    public HashMap<Integer, ? extends ItemStack> all(Material material); 
+    public Map<Integer, ? extends ItemStack> all(Material material); 
 
     /**
      * Find all slots in the inventory containing any ItemStacks with the given ItemStack
@@ -121,15 +122,15 @@ public interface Inventory {
      * @param item The ItemStack to match against
      * @return The Slots found.
      */
-    public HashMap<Integer, ? extends ItemStack> all(ItemStack item);
+    public Map<Integer, ? extends ItemStack> all(ItemStack item);
 
     /**
-     * Find the first slot in the inventory containing an ItemStack with the given materialId
+     * Find the first slot in the inventory containing an ItemStack with the given Material.Type
      * 
-     * @param materialId The materialId to look for
+     * @param materialType The Material.Type to look for
      * @return The Slot found.
      */
-    public int first(int materialId);
+    public int first(Material.Type materialType);
 
     /**
      * Find the first slot in the inventory containing an ItemStack with the given material
@@ -156,11 +157,11 @@ public interface Inventory {
     public int firstEmpty();
 
     /**
-     * Remove all stacks in the inventory matching the given materialId.
+     * Remove all stacks in the inventory matching the given Material.Type.
      * 
-     * @param materialId The material to remove
+     * @param materialType The Material.Type to remove
      */
-    public void remove(int materialId);
+    public void remove(Material.Type materialType);
 
     /**
      * Remove all stacks in the inventory matching the given material.

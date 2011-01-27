@@ -9,6 +9,7 @@ public enum MobType {
     COW("Cow"),
     CREEPER("Creeper"),
     GHAST("Ghast"),
+    // TODO add GIANT mob type
     PIG("Pig"),
     PIG_ZOMBIE("PigZombie"),
     SHEEP("Sheep"),

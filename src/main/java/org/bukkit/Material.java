@@ -243,10 +243,15 @@ public interface Material {
 
         /**
          * Gets the maximum amount of this material that can be held in a stack
+         * 
+         * This is the minecraft server default, and may be different to what a specific server
+         * allows which can be found through Material.getMaxStackSize()
          *
          * @return Maximum stack size for this material
+         * 
+         * @see Material.getMaxStackSize()
          */
-        public int getMaxStackSize() {
+        public int defaultMaxStackSize() {
             return maxStack;
         }
 

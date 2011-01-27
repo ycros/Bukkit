@@ -2,6 +2,8 @@
 package org.bukkit;
 
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
 import java.util.List;
 
 import org.bukkit.plugin.PluginManager;
@@ -93,4 +95,36 @@ public interface Server {
      * Reloads the server, refreshing settings and plugin information
      */
     public void reload();
+
+    /**
+     * Create a new Material of type <tt>type</tt>
+     * 
+     * This material is only guaranteed to have the basic functionality of any material.
+     * It may have extra functionality, but this needs to be checked for using <tt>instanceof</tt>.
+     * For example, to check if a material is colorable, you must use:
+     * <tt>if (material instanceof org.bukkit.material.Colorable) </tt>
+     * 
+     * @param type the type of this material
+     * @return
+     */
+    public Material newMaterial(Material.Type type);
+
+    /**
+     * Similar to <tt>newMaterial(Material.Type type)</tt> but uses a lookup against a name.
+     * 
+     * This can be used to get materials through their enum name, or to get custom materials that are server specific.
+     * @param name
+     * @return
+     */
+    public Material newMaterial(String name);
+    
+    /**
+     * Create a stack of Material.
+     * 
+     * @param material the Material of the ItemStack.
+     * @param amount the number of Material in this stack.
+     * 
+     * @return a new ItemStack as specified, or null if it was not created.
+     */
+    public ItemStack newItemStack(Material material, int amount);
 }
