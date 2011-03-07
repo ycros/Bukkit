@@ -160,9 +160,9 @@ public final class JavaPluginLoader implements PluginLoader {
                     ((PlayerListener)listener).onPlayerTeleport( (PlayerMoveEvent)event );
                 }
             };
-        case PLAYER_ITEM:
+        case PLAYER_INTERACT:
             return new EventExecutor() { public void execute( Listener listener, Event event ) {
-                    ((PlayerListener)listener).onPlayerItem( (PlayerItemEvent)event );
+                    ((PlayerListener)listener).onPlayerItem( (PlayerInteractEvent)event );
                 }
             };
         case PLAYER_LOGIN:
@@ -217,26 +217,26 @@ public final class JavaPluginLoader implements PluginLoader {
                     ((BlockListener)listener).onBlockCanBuild( (BlockCanBuildEvent)event );
                 }
             };
-        case BLOCK_RIGHTCLICKED:
-            return new EventExecutor() { public void execute( Listener listener, Event event ) {
-                    ((BlockListener)listener).onBlockRightClick( (BlockRightClickEvent)event );
-                }
-            };
-        case BLOCK_PLACED:
-            return new EventExecutor() { public void execute( Listener listener, Event event ) {
-                    ((BlockListener)listener).onBlockPlace( (BlockPlaceEvent)event );
-                }
-            };
+//        case BLOCK_RIGHTCLICKED:
+//            return new EventExecutor() { public void execute( Listener listener, Event event ) {
+//                    ((BlockListener)listener).onBlockRightClick( (BlockRightClickEvent)event );
+//                }
+//            };
+//        case BLOCK_PLACED:
+//            return new EventExecutor() { public void execute( Listener listener, Event event ) {
+//                    ((BlockListener)listener).onBlockPlace( (BlockPlaceEvent)event );
+//                }
+//            };
         case BLOCK_DAMAGED:
             return new EventExecutor() { public void execute( Listener listener, Event event ) {
                     ((BlockListener)listener).onBlockDamage( (BlockDamageEvent)event );
                 }
             };
-        case BLOCK_INTERACT:
-            return new EventExecutor() { public void execute( Listener listener, Event event ) {
-                    ((BlockListener)listener).onBlockInteract( (BlockInteractEvent)event );
-                }
-            };
+//        case BLOCK_INTERACT:
+//            return new EventExecutor() { public void execute( Listener listener, Event event ) {
+//                    ((BlockListener)listener).onBlockInteract( (BlockInteractEvent)event );
+//                }
+//            };
         case BLOCK_FLOW:
             return new EventExecutor() { public void execute( Listener listener, Event event ) {
                     ((BlockListener)listener).onBlockFlow( (BlockFromToEvent)event );

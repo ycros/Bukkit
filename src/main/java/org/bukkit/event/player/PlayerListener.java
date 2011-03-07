@@ -80,7 +80,7 @@ public class PlayerListener implements Listener {
      *
      * @param event Relevant event details
      */
-    public void onPlayerItem(PlayerItemEvent event) {
+    public void onPlayerItem(PlayerInteractEvent event) {
     }
 
     /**

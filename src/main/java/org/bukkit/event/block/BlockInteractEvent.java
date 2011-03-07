@@ -15,7 +15,8 @@ import org.bukkit.event.Cancellable;
  * 
  * @author durron597
  */
-public class BlockInteractEvent extends BlockEvent implements Cancellable {
+@Deprecated
+class BlockInteractEvent extends BlockEvent implements Cancellable {
     protected boolean cancel;
     protected LivingEntity theEntity;
     

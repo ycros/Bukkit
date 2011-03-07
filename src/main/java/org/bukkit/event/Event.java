@@ -209,11 +209,11 @@ public abstract class Event implements Serializable {
         PLAYER_TOGGLE_SNEAK (Category.PLAYER),
 
         /**
-         * Called when a player uses an item
+         * Called when a player uses an item (or their fist)
          *
-         * @see org.bukkit.event.player.PlayerItemEvent
+         * @see org.bukkit.event.player.PlayerInteractEvent
          */
-        PLAYER_ITEM (Category.PLAYER),
+        PLAYER_INTERACT (Category.PLAYER),
 
         /**
          * Called when a player throws an egg and it might hatch
@@ -302,21 +302,21 @@ public abstract class Event implements Serializable {
          *
          * @see org.bukkit.event.block.BlockRightClickEvent
          */
-        BLOCK_RIGHTCLICKED (Category.BLOCK),
+//        BLOCK_RIGHTCLICKED (Category.BLOCK),
 
         /**
          * Called when a player is attempting to place a block
          *
          * @see org.bukkit.event.block.BlockPlaceEvent
          */
-        BLOCK_PLACED (Category.BLOCK),
+//        BLOCK_PLACED (Category.BLOCK),
 
         /**
          * Called when an entity interacts with a block (lever, door, pressure plate, chest, furnace)
          *
          * @see org.bukkit.event.block.BlockInteractEvent
          */
-        BLOCK_INTERACT (Category.BLOCK),
+//        BLOCK_INTERACT (Category.BLOCK),
 
         /**
          * Called when a block is destroyed from being burnt by fire
@@ -602,7 +602,7 @@ public abstract class Event implements Serializable {
          * Represents a custom event, isn't actually used
          */
         CUSTOM_EVENT (Category.MISCELLANEOUS);
-
+        
         private final Category category;
 
         private Type(Category category) {
@@ -617,5 +617,27 @@ public abstract class Event implements Serializable {
         public Category getCategory() {
             return category;
         }
+    }
+
+    public enum Result {
+        /**
+         * Deny the event.
+         * Depending on the event, the action indicated by the event will either not take place or will be reverted.
+         * Some actions may not be denied.
+         */
+        DENY,
+
+        /**
+         * Neither deny nor allow the event.
+         * The server will proceed with its normal handling.
+         */
+        DEFAULT,
+
+        /**
+         * Allow / Force the event.
+         * The action indicated by the event will take place if possible, even if the server would not normally allow the action.
+         * Some actions may not be allowed.
+         */
+        ALLOW;
     }
 }

@@ -8,7 +8,8 @@ import org.bukkit.entity.Player;
 /**
  * Not implemented yet
  */
-public class BlockRightClickEvent extends BlockEvent  {
+@Deprecated
+class BlockRightClickEvent extends BlockEvent  {
     protected Block clickedBlock;
     protected BlockFace direction;
     protected ItemStack itemInHand;
