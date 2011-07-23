@@ -121,6 +121,10 @@ public abstract class Event implements Serializable {
         /**
          * Represents Server and Plugin based events
          */
+		MAP,
+		/**
+		 * Represents Map related events
+		 */
         SERVER,
         /**
          * Represents Inventory-based events
@@ -140,6 +144,22 @@ public abstract class Event implements Serializable {
     public enum Type {
 
         /**
+		 * MAP EVENTS
+		 */
+
+		/**
+		 * Called when a map is loaded into memory
+		 * 
+		 * @see org.bukkit.event.player.MapEvent
+		 */
+		MAP_INITIALIZE(Category.MAP), 
+		/**
+		 * Called when a map index is preparing to be created
+		 * 
+		 * @see org.bukkit.event.player.MapEvent
+		 */
+		MAP_INDEXCREATED(Category.MAP),
+		/**
          * PLAYER EVENTS
          */
 
