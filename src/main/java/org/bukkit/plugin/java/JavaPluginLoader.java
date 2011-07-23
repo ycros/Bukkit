@@ -19,9 +19,7 @@ import org.bukkit.event.CustomEventListener;
 import org.bukkit.event.Event;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
-import org.bukkit.event.map.MapIndexCreatedEvent;
-import org.bukkit.event.map.MapInitializeEvent;
-import org.bukkit.event.map.MapListener;
+import org.bukkit.event.map.*;
 import org.bukkit.event.painting.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.*;
@@ -239,8 +237,6 @@ public final class JavaPluginLoader implements PluginLoader {
         // TODO: remove multiple Listener type and hence casts
 
         switch (type) {
-			}; 
-			// Map Events
 
 		case MAP_INITIALIZE:
 			return new EventExecutor() {
@@ -256,7 +252,6 @@ public final class JavaPluginLoader implements PluginLoader {
 							.onMapIndexCreated((MapIndexCreatedEvent) event);
 				}
 			};
-        // Player Events
 
         case PLAYER_JOIN:
             return new EventExecutor() {
