@@ -3,6 +3,7 @@ package org.bukkit.plugin;
 import java.io.File;
 import java.util.Set;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.Event;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Listener;
@@ -252,4 +253,20 @@ public interface PluginManager {
      * @return Set containing all current registered permissions
      */
     public Set<Permission> getPermissions();
+
+    /**
+     * Turns clock time profiling of plugin event handlers on.
+     *
+     * This will cause messages to be sent to the commandSender of the names of plugin event handlers which exceed the
+     * time and invocation thresholds.
+     *
+     * @param commandSender Who initiated the profiling, where to send results to.
+     * @param timeThreshold Milliseconds. Only include in results if time exceeds this value.
+     */
+    public void enableProfiling(CommandSender commandSender, long timeThreshold);
+
+    /**
+     * Disables clock time profiling of plugin event handlers.
+     */
+    public void disableProfiling();
 }

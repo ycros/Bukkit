@@ -23,6 +23,7 @@ import java.util.regex.Matcher;
 import org.bukkit.Server;
 import java.util.regex.Pattern;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.PluginCommandYamlParser;
 import org.bukkit.command.SimpleCommandMap;
 
@@ -34,6 +35,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 import org.bukkit.util.FileUtil;
+import org.bukkit.util.Profiler;
 
 /**
  * Handles all plugin management from the Server
@@ -61,6 +63,7 @@ public final class SimplePluginManager implements PluginManager {
             return result;
         }
     };
+    private Profiler profiler = null;
 
     public SimplePluginManager(Server instance, SimpleCommandMap commandMap) {
         server = instance;
@@ -336,7 +339,21 @@ public final class SimplePluginManager implements PluginManager {
         if (eventListeners != null) {
             for (RegisteredListener registration : eventListeners) {
                 try {
+                    if (profiler != null) {
+                        StringBuilder key = new StringBuilder();
+                        key.append(registration.getPlugin().getDescription().getName());
+                        key.append('/');
+                        key.append(registration.getListener().getClass().getCanonicalName());
+                        key.append('/');
+                        key.append(event.getEventName());
+
+                        profiler.start(key.toString());
+                    }
+
                     registration.callEvent(event);
+
+                    if (profiler != null)
+                        profiler.end();
                 } catch (AuthorNagException ex) {
                     Plugin plugin = registration.getPlugin();
 
@@ -539,5 +556,18 @@ public final class SimplePluginManager implements PluginManager {
 
     public Set<Permission> getPermissions() {
         return new HashSet<Permission>(permissions.values());
+    }
+
+    public void disableProfiling() {
+        profiler.sendMessage("Disabled.");
+        profiler = null;
+    }
+
+    public void enableProfiling(CommandSender commandSender, long timeThreshold) {
+        if (profiler != null)
+            profiler.sendMessage(String.format("Disabled due to %s starting a new profiler.", commandSender.getName()));
+
+        profiler = new Profiler(commandSender, timeThreshold);
+        profiler.sendMessage("Enabled.");
     }
 }
